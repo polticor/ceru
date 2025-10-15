@@ -571,60 +571,44 @@ Instalación y operación de **planta de tratamiento de residuos hospitalarios (
 ## 5.2 Diagrama de flujo de proceso (PFD ASCII)
 
 flowchart TD
+  EXT["EXTERIOR / ACCESO AL PREDIO"]
+  EXT --> PORTAL["PORTAL GAMMA (RAD-01) - Alarma/Rechazo si radiación > umbral"]
+  PORTAL --> BAS_IN["BÁSCULA INGRESO (BAS-01) - Registro peso_in + QR"]
+  BAS_IN --> REC["RECEPCIÓN & CLASIFICACIÓN (REC-01) - Identificación por QR"]
 
-    %% ==========================
-    %% SECCIÓN 1 — ACCESO Y CONTROL RADIOLÓGICO
-    %% ==========================
-    EXT(["EXTERIOR / ACCESO AL PREDIO"])
-    EXT --> PORTAL[PORTAL GAMMA<br/>(RAD-01)<br/>► Alarma/Rechazo si radiación > umbral]
-    PORTAL --> BAS_IN[BÁSCULA INGRESO<br/>(BAS-01)<br/>► Registro peso_in + QR]
-    BAS_IN --> REC[RECEPCIÓN & CLASIFICACIÓN<br/>(REC-01)<br/>► Identificación por QR]
+  REC -->|"Aceptación"| SUCIA["SALA 'SUCIA' - ΔP negativa: objetivo -15 Pa - Captación localizada + pre-sellos"]
 
-    %% ==========================
-    %% SECCIÓN 2 — SALA "SUCIA" Y AUTOCLAVES
-    %% ==========================
-    REC -->|"Aceptación"| SUCIA[SALA "SUCIA"<br/>(ΔP negativa: objetivo −15 Pa)<br/>Captación localizada + pre-sellos]
+  SUCIA --> AUT1["AUTOCLAVE L1 (AUT-01)"]
+  SUCIA --> AUT2["AUTOCLAVE L2 (AUT-02)"]
+  SUCIA --> AUT3["AUTOCLAVE L3 (AUT-03)"]
 
-    SUCIA --> AUT1[AUTOCLAVE L1<br/>(AUT-01)]
-    SUCIA --> AUT2[AUTOCLAVE L2<br/>(AUT-02)]
-    SUCIA --> AUT3[AUTOCLAVE L3<br/>(AUT-03)]
+  AUT1 -->|"Ciclo T/P + BI/IC"| DESC1["DESCARGA EST."]
+  AUT2 -->|"Ciclo T/P + BI/IC"| DESC2["DESCARGA EST."]
+  AUT3 -->|"Ciclo T/P + BI/IC"| DESC3["DESCARGA EST."]
 
-    AUT1 -->|"Ciclo T/P + BI/IC"| DESC1[DESCARGA EST.]
-    AUT2 -->|"Ciclo T/P + BI/IC"| DESC2[DESCARGA EST.]
-    AUT3 -->|"Ciclo T/P + BI/IC"| DESC3[DESCARGA EST.]
+  DESC1 --> TRIT["TRITURACIÓN POS-EST. (TR-01)"]
+  DESC2 --> TRIT
+  DESC3 --> TRIT
 
-    DESC1 --> TRIT[TRITURACIÓN POS-EST.<br/>(TR-01)]
-    DESC2 --> TRIT
-    DESC3 --> TRIT
+  TRIT --> ACD["ACONDICIONAMIENTO (ACD-01)"]
+  ACD --> BAS_OUT["BÁSCULA EGRESO (BAS-02)"]
+  BAS_OUT --> EXP["EXPEDICIÓN (EXP-01)"]
 
-    %% ==========================
-    %% SECCIÓN 3 — SALIDA
-    %% ==========================
-    TRIT --> ACD[ACONDICIONAMIENTO<br/>(ACD-01)]
-    ACD --> BAS_OUT[BÁSCULA EGRESO<br/>(BAS-02)]
-    BAS_OUT --> EXP[EXPEDICIÓN<br/>(EXP-01)]
+  subgraph SVA["SERVICIOS AUXILIARES (SVA)"]
+    SVA1["Piano de vapor (2×530 kgv/h, N+1): PRV, separador, purgadores, válvulas seg."]
+    SVA2["Gestión de condensado: tanque -> intercambiador placas (ICX-01) -> T < 40 °C -> PME-01 -> colector"]
+    SVA3["Aire comprimido (AIR-01), agua tratada (RO-01/ABL-01), energía (TAB-01)"]
+    SVA4["HVAC/extracción: ΔP y Q monitorizados; filtros MERV-13 / HEPA selectivo"]
+  end
 
-    %% ==========================
-    %% SECCIÓN 4 — SERVICIOS AUXILIARES
-    %% ==========================
-    subgraph SVA["SERVICIOS AUXILIARES (SVA)"]
-      SVA1[Piano de vapor (2×530 kgv/h, N+1):<br/>PRV, separador, purgadores, válvulas seg.]
-      SVA2[Gestión de condensado:<br/>tanque → intercambiador placas (ICX-01) → T < 40 °C → PME-01 → colector]
-      SVA3[Aire comprimido (AIR-01), agua tratada (RO-01/ABL-01), energía (TAB-01)]
-      SVA4[HVAC/extracción:<br/>ΔP y Q monitorizados; filtros MERV-13 / HEPA selectivo]
-    end
+  classDef autoclave fill:#ffe6f2,stroke:#800040,stroke-width:1px;
+  classDef service fill:#e6f7ff,stroke:#0077b3,stroke-width:1px;
+  classDef process fill:#fff8e6,stroke:#b36b00,stroke-width:1px;
 
-    %% ==========================
-    %% ESTILO
-    %% ==========================
-    classDef area fill:#f2f2f2,stroke:#888,stroke-width:1px,color:#000;
-    classDef autoclave fill:#ffe6f2,stroke:#800040,stroke-width:1px;
-    classDef service fill:#e6f7ff,stroke:#0077b3,stroke-width:1px;
-    classDef process fill:#fff8e6,stroke:#b36b00,stroke-width:1px;
+  class EXT,PORTAL,BAS_IN,REC,SUCIA,DESC1,DESC2,DESC3,TRIT,ACD,BAS_OUT,EXP process;
+  class AUT1,AUT2,AUT3 autoclave;
+  class SVA1,SVA2,SVA3,SVA4 service;
 
-    class EXT,PORTAL,BAS_IN,REC,SUCIA,DESC1,DESC2,DESC3,TRIT,ACD,BAS_OUT,EXP process;
-    class AUT1,AUT2,AUT3 autoclave;
-    class SVA1,SVA2,SVA3,SVA4 service;
 
 
 > **Nota de auditoría — planos y tags**  
