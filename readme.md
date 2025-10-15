@@ -1,3 +1,13 @@
+<!-- Habilitar Mermaid en GitHub Pages (cliente) -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: 'strict'  // usa 'loose' sólo si necesitas <br/> u HTML en labels
+  });
+</script>
+
+
 # PROYECTO: Planta de Tratamiento de Residuos Hospitalarios — Polticor S.A.
 
 ## Portada
