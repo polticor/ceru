@@ -292,7 +292,7 @@ Instalación y operación de **planta de tratamiento de residuos hospitalarios (
 - **Sistemas de gestión:** **ISO 9001, 14001, 45001, 50001, 19011, 27001, 31000**.
 
 > **Nota de auditoría — criterio de equivalencia técnica**  
-> Cuando corresponda, demostrar **concordancia** entre NR-13 y los requisitos locales / internacionales (ASME/EN) mediante **prontuario**, **certificados de válvulas/sensores** y **ensayos** (Cap. 10 y 17).
+> Cuando corresponda, demostrar **concordancia** entre NR-13 y los requisitos locales / internacionales (ASME/EN) mediante **prontuario**, **certificados de válvulas/sensores** y **ensayos** (Cap. 10 y 17). Se utilizará siempre que posible NR-13 visto que es unta regla reconocida en el MercoSur.
 
 ---
 
@@ -343,7 +343,7 @@ Instalación y operación de **planta de tratamiento de residuos hospitalarios (
 ## 3.6 Recipientes a presión / calderas: NR-13 como referencia técnica
 
 **Lineamientos técnicos:**  
-- **Prontuario** del vaso de presión; **cálculos**, **materiales**, **soldaduras**, **ensayos**, **válvulas de seguridad** y **dispositivos** con **certificados** trazables (ASME/EN o equivalentes).  
+- **Prontuario** del vaso de presión; **cálculos**, **materiales**, **soldaduras**, **ensayos**, **válvulas de seguridad** y **dispositivos** con **certificados** trazables (NR-13 o si necesario AMSE/EN o equivalentes).  
 - **Inspecciones** y **mantenimiento** conforme a programa preventivo; **calibraciones** con certificados.  
 - **FAT/SAT**: verificación de **enclavamientos**, **curvas T/P**, válvulas y presostatos; emisión de documentación de conformidad.
 
@@ -1184,7 +1184,7 @@ flowchart TD
 
 > **Control documental**  
 > **Versión:** `V1.0` · **Fecha:** `"[AAAA-MM-DD]"` · **Responsable:** `"[Nombre, matrícula]"`  
-> **Normas guía:** ISO 17665-1 / EN 285 (esterilizadores a vapor), ASME B31.1/B31.3 (tuberías), ISO 50001 (energía), ISO 14001 (ambiental), ISO 27001/19011 (datos/auditoría), **NR-13** (referencia técnica vasos de presión y accesorios).  
+> **Normas guía:** ISO 17665-1 / EN 285 (esterilizadores a vapor), NR-13 / ASME B31.1/B31.3 (tuberías) si necesario, ISO 50001 (energía), ISO 14001 (ambiental), ISO 27001/19011 (datos/auditoría), **NR-13** (referencia técnica vasos de presión y accesorios).  
 > **Parámetros de diseño fijados:** 3 líneas (esc. 5–7); **2×530 kgv/h (N+1)**; perfil por línea **~172 kgv/h prom. / 300 kgv/h pico**; **templado de condensado < 40 °C** y **punto de muestreo**; **intercambiador** para **precalentar agua fría de alimentación** con calor del condensado (recuperación energética).
 
 ---
@@ -1929,7 +1929,7 @@ flowchart LR
 
 > **Control documental**  
 > **Versión:** `V1.0` · **Fecha:** `"[AAAA-MM-DD]"` · **Responsable:** `"[Nombre, matrícula]"`  
-> **Marcos de referencia:** **ISO 45001** (SST), **ISO 31000** (gestión de riesgos), **ISO 19011** (auditorías), **ISO 17665-1/EN 285** (esterilización a vapor), **ASME B31.1/B31.3** (piping), **IEC 61511** (seguridad funcional, referencia), **NR-13** (recipientes a presión, referencia técnica).  
+> **Marcos de referencia:** **ISO 45001** (SST), **ISO 31000** (gestión de riesgos), **ISO 19011** (auditorías), **ISO 17665-1/EN 285** (esterilización a vapor), **NR13 - o ASME B31.1/B31.3** (piping), **IEC 61511** (seguridad funcional, referencia), **NR-13** (recipientes a presión, referencia técnica).  
 > **Alcance:** Operación 24/7 de **3 líneas de autoclave** (esc. 5–7), **piano de vapor**, **cabina de descarga**, **trituración**, **HVAC** de salas sucias, **servicios** (eléctrico, aire, ICX, efluentes) y logística interna.
 
 ---
@@ -2659,7 +2659,8 @@ Operaciones |
 **Equipos:** autoclaves (3), calderas 530 kgv/h (N+1), ICX/intercambiador, trituradores, instrumentos críticos (PT100, manovacuómetros, caudalímetros).
 
 **Pruebas mínimas FAT:**
-- **Integridad mecánica**: pruebas de estanqueidad/hidrostática (proveedor) y certificados de materiales/accesorios (válvulas conforme **ASME B16.34 / ISO 4126 / NBR**).  
+- **Integridad mecánica**: pruebas de estanqueidad/hidrostática (proveedor) y certificados de materiales/accesorios (válvulas conforme **NBR ISO 14313. 
+ o si necesario ASME B16.34 / ISO 4126 / NBR**).  
 - **Seguridad funcional**: enclavamientos puerta-presión, PRV/SRV, presostatos y control de nivel.  
 - **Ciclo sintético**: vacío/calor; exportación **CSV** de curva **T/P**; verificación de formato para `rss_trace`.  
 - **Documental**: OMM, listas de repuestos críticos, certificaciones de calibración, prontuario **NR-13** (referencia), check-list de empaques/purgadores.
